@@ -3,7 +3,6 @@ package com.razzaghi.filimo
 import com.razzaghi.filimo.business.core.DataState
 import com.razzaghi.filimo.business.core.ProgressBarState
 import com.razzaghi.filimo.business.core.UIComponent
-import com.razzaghi.filimo.business.datasource.network.search.ApiService
 import com.razzaghi.filimo.business.datesource_test.network.SearchServiceFake
 import com.razzaghi.filimo.business.datesource_test.network.SearchServiceResponseType
 import com.razzaghi.filimo.business.domain.search.Search
@@ -31,13 +30,14 @@ class SearchTest {
         // First emission should be loading
         assert(emissions[0] == DataState.Loading<Search>(ProgressBarState.Loading))
 
-        // Confirm second emission is data
+        // Confirm second emission is Response
         assert(emissions[1] is DataState.Response)
         assert((emissions[1] as DataState.Response).uiComponent is UIComponent.DialogSimple)
 
         // Confirm loading state is IDLE
         assert(emissions[2] == DataState.Loading<Search>(ProgressBarState.Idle))
     }
+
     @Test
     fun `search Joker and returns result`() = runBlocking {
         // setup
