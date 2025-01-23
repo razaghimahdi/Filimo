@@ -1,4 +1,4 @@
-package com.razzaghi.filimo.ui.theme
+package com.razzaghi.filimo.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

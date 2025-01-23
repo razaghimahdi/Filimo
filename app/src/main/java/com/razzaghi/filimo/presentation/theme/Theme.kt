@@ -1,6 +1,5 @@
-package com.razzaghi.filimo.ui.theme
+package com.razzaghi.filimo.presentation.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
