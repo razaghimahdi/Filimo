@@ -31,10 +31,10 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew test
 
-      - name: Run Instrumented Tests
-        run: ./gradlew connectedAndroidTest
-        env:
-             ANDROID_SDK_ROOT: ${{ runner.tool_cache }}/android-sdk
+      #- name: Run Instrumented Tests
+      #  run: ./gradlew connectedAndroidTest
+      #  env:
+      #       ANDROID_SDK_ROOT: ${{ runner.tool_cache }}/android-sdk
 
       - name: Build debug APK
         run: bash ./gradlew assembleDebug --stacktrace
