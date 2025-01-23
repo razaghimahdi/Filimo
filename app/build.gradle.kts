@@ -63,6 +63,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    androidTestImplementation(libs.androidx.activity.compose)
+    androidTestImplementation(libs.androidx.ui.graphics)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
@@ -72,6 +75,7 @@ dependencies {
     implementation(libs.koin.android)
     implementation(libs.bundles.network)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.coil)
 
 
 
