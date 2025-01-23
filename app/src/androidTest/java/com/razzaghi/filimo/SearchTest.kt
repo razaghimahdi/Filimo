@@ -8,6 +8,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performScrollTo
 import com.razzaghi.filimo.business.datesource_test.network.data.SearchDataValid
 import com.razzaghi.filimo.business.datesource_test.network.serializeSearchData
 import com.razzaghi.filimo.presentation.ui.search.SearchScreen
@@ -18,7 +19,7 @@ import org.junit.Test
 
 @ExperimentalAnimationApi
 @ExperimentalComposeUiApi
-class HeroListTest {
+class SearchTest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
@@ -42,7 +43,8 @@ class HeroListTest {
                 )
             }
         }
-        composeTestRule.onNodeWithText("جوکر").assertIsDisplayed()
+        composeTestRule.onNodeWithText("Joker")
+            .assertIsDisplayed()
     }
 
 }
