@@ -14,8 +14,6 @@ fun <T> handleUseCaseException(
     e: Throwable,
 ): DataState.Response<T> {
 
-    Log.i(TAG, "handleUseCaseException e: " + e?.message)
-
     e.printStackTrace()
 
 

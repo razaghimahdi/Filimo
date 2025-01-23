@@ -4,6 +4,8 @@ sealed class SearchServiceResponseType {
 
     object EmptyList : SearchServiceResponseType()
 
+    object Error406 : SearchServiceResponseType()
+
     object GoodData : SearchServiceResponseType()
 
 }

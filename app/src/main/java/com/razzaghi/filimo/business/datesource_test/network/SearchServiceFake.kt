@@ -37,18 +37,28 @@ class SearchServiceFake {
     private inner class MockInterceptor(val type: SearchServiceResponseType) : Interceptor {
 
         override fun intercept(chain: Interceptor.Chain): Response {
-            val responseString = when (type) {
+            val responseString: String
+            val responseCode: Int
+
+            when (type) {
                 is SearchServiceResponseType.EmptyList -> {
-                    SearchDataEmpty.data
+                    responseString = SearchDataEmpty.data
+                    responseCode = 200
+                }
+
+                is SearchServiceResponseType.Error406 -> {
+                    responseString = SearchDataEmpty.data
+                    responseCode = 406
                 }
 
                 is SearchServiceResponseType.GoodData -> {
-                    SearchDataValid.data
+                    responseString = SearchDataValid.data
+                    responseCode = 200
                 }
             }
             return chain.proceed(chain.request())
                 .newBuilder()
-                .code(200)
+                .code(responseCode)
                 .protocol(Protocol.HTTP_2)
                 .message(responseString)
                 .body(
