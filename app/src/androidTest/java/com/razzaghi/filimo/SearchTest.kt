@@ -8,7 +8,6 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performScrollTo
 import com.razzaghi.filimo.business.datesource_test.network.data.SearchDataValid
 import com.razzaghi.filimo.business.datesource_test.network.serializeSearchData
 import com.razzaghi.filimo.presentation.ui.search.SearchScreen
@@ -30,13 +29,11 @@ class SearchTest {
     fun joker_result_is_shown() {
         composeTestRule.setContent {
             MaterialTheme() {
-                val state = remember{
-                    SearchState(
-                        search = search,
-                        query = "Joker"
-                    )
-                }
-                SearchScreen (
+                val state = SearchState(
+                    search = search,
+                    query = "Joker"
+                )
+                SearchScreen(
                     state = state,
                     events = {},
                     errors = emptyFlow()
