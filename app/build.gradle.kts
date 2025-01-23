@@ -1,44 +1,38 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.parcelize)
-    alias(libs.plugins.kotlin.serialization)
+    id("razzaghi.android.application")
+    id("razzaghi.android.application.compose")
+    id("razzaghi.android.build.flavor")
 }
 
 android {
-    namespace = "com.razzaghi.filimo"
-    compileSdk = 35
+    namespace = libs.versions.applicationId.get()
 
     defaultConfig {
-        applicationId = "com.razzaghi.filimo"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId =  libs.versions.applicationId.get()
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
     }
 
+
     buildTypes {
-        release {
-            isMinifyEnabled = false
+        getByName("debug") {
+            manifestPlaceholders["backup"] = "true"
+        }
+
+        getByName("release") {
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            manifestPlaceholders["backup"] = "true"
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-    buildFeatures {
-        compose = true
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
